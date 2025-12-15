@@ -1,0 +1,15 @@
+name: Test ntfy Push
+
+on:
+  workflow_dispatch:   # 手动触发
+
+jobs:
+  test-ntfy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send test message to ntfy
+        run: |
+          echo "🔔 测试 ntfy 推送..."
+          curl -H "Content-Type: application/json" \
+               -d '{"message":"这是一条测试消息，来自 GitHub Actions ✅","title":"Workflow Test"}' \
+               ${{ secrets.NTFY_SERVER_URL }}/${{ secrets.NTFY_TOPIC }}
