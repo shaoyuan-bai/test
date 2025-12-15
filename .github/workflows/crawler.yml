@@ -160,4 +160,11 @@ jobs:
           S3_ENDPOINT_URL: ${{ secrets.S3_ENDPOINT_URL }}
           S3_REGION: ${{ secrets.S3_REGION }}
           GITHUB_ACTIONS: true
+          
         run: python -m trendradar
+      - name: Test ntfy push
+        run: |
+          echo "🔔 测试 ntfy 推送..."
+          curl -H "Title: Workflow Test" \
+               -d "这是一条测试消息，来自 GitHub Actions ✅" \
+               ${{ secrets.NTFY_SERVER_URL }}/${{ secrets.NTFY_TOPIC }}
