@@ -76,7 +76,7 @@ report:
   mode: "daily" # 可选: "daily"|"incremental"|"current"
   rank_threshold: 5 # 排名高亮阈值
   sort_by_position_first: true # 排序优先级：true=先按配置位置排序，false=先按热点条数排序
-  max_news_per_keyword: 30 # 每个关键词最大显示数量，0=不限制
+  max_news_per_keyword: 0 # 每个关键词最大显示数量，0=不限制
   reverse_content_order: false # 内容顺序：false=热点词汇统计在前，true=新增热点新闻在前
 
 notification:
@@ -96,11 +96,11 @@ notification:
   #   - 只想在工作日白天接收推送（如 09:00-18:00）
   #   - 希望在晚上固定时间收到汇总（如 20:00-22:00）
   push_window:
-    enabled: false
+    enabled: true
     # 注意：GitHub Actions 执行时间不稳定，时间范围建议至少留足 2 小时
     # 如果想要精准的定时推送，建议使用 Docker 部署在个人服务器上
     time_range:
-      start: "11:00"  # 推送时间窗口开始（北京时间）
+      start: "15:00"  # 推送时间窗口开始（北京时间）
       end: "17:00"    # 推送时间窗口结束（北京时间）
     once_per_day: true  # 每天在时间窗口内只推送一次，如果 false，则窗口内每次执行都推送
 
